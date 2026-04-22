@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brothers Property Solution - Buy & Sell Properties in India</title>
+    <meta name="description" content="Find your dream property. Buy, sell, rent apartments, houses, villas, plots across India.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root { --primary: #1a5c2e; --secondary: #f7c948; }
+        .bg-primary { background-color: var(--primary) !important; }
+        .text-primary-custom { color: var(--primary) !important; }
+        .btn-primary-custom { background-color: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; }
+        .btn-primary-custom:hover { background-color: #134723; color: white; }
+        .hero { background: linear-gradient(rgba(26,92,46,0.92),rgba(26,92,46,0.85)),url(https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920) center/cover; min-height: 580px; }
+        .hero-section { display: flex; align-items: center; }
+        .property-card { border-radius: 15px; transition: all 0.3s; overflow: hidden; }
+        .property-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+        .property-img { height: 230px; background: linear-gradient(135deg, #1a5c2e, #2d8a4e); }
+        .type-badge { position: absolute; top: 12px; left: 12px; }
+        .price-tag { font-size: 1.4rem; font-weight: 700; }
+        .feature-box { background: white; border-radius: 15px; padding: 35px; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .feature-box:hover { transform: translateY(-8px); }
+        .search-box { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .nav-pills .nav-link.active { background-color: var(--primary); }
+        .nav-pills .nav-link { color: #333; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-2">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary-custom fs-4" href="index.html">
+                <i class="fas fa-building me-2"></i>Brothers Property Solution
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link fw-medium" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="sale.html">For Sale</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="rent.html">For Rent</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a href="contact.html?type=post" class="btn btn-primary-custom">
+                            <i class="fas fa-plus me-1"></i>Post Property
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-section text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 fw-bold mb-4">Find Your Dream Property</h1>
+                    <p class="lead mb-5 fs-5">India's Most Trusted Real Estate Platform for Buying & Selling Properties</p>
+                    
+                    <div class="search-box">
+                        <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active btn-lg me-2 px-4" id="buy-tab" data-bs-toggle="pill" data-bs-target="#buy-content">
+                                    <i class="fas fa-home me-2"></i>Buy
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link btn-lg px-4" id="rent-tab" data-bs-toggle="pill" data-bs-target="#rent-content">
+                                    <i class="fas fa-key me-2"></i>Rent
+                                </button>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="buy-content">
+                                <form action="sale.html" method="GET" class="row g-3">
+                                    <input type="hidden" name="type" value="sale">
+                                    <div class="col-md-3">
+                                        <select name="property_type" class="form-select form-select-lg">
+                                            <option value="">Property Type</option>
+                                            <option>Apartment</option>
+                                            <option>House/Villa</option>
+                                            <option>Plot/Land</option>
+                                            <option>Commercial</option>
+                                            <option>Office</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="city" class="form-select form-select-lg">
+                                            <option value="">City</option>
+                                            <option>Delhi</option>
+                                            <option>Noida</option>
+                                            <option>Gurgaon</option>
+                                            <option>Bangalore</option>
+                                            <option>Mumbai</option>
+                                            <option>Pune</option>
+                                            <option>Chandigarh</option>
+                                            <option>Hyderabad</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="budget" class="form-select form-select-lg">
+                                            <option value="">Budget</option>
+                                            <option value="0-1000000">Under ₹10 Lac</option>
+                                            <option value="1000000-2500000">₹10-25 Lac</option>
+                                            <option value="2500000-5000000">₹25-50 Lac</option>
+                                            <option value="5000000-10000000">₹50 Lac - 1 Cr</option>
+                                            <option value="10000000-20000000">₹1-2 Cr</option>
+                                            <option value="20000000-">Above ₹2 Cr</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" class="btn btn-primary-custom btn-lg w-100">
+                                            <i class="fas fa-search me-2"></i>Search
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="rent-content">
+                                <form action="rent.html" method="GET" class="row g-3">
+                                    <input type="hidden" name="type" value="rent">
+                                    <div class="col-md-3">
+                                        <select name="property_type" class="form-select form-select-lg">
+                                            <option value="">Property Type</option>
+                                            <option>Apartment</option>
+                                            <option>House/Villa</option>
+                                            <option>PG/Hostel</option>
+                                            <option>Commercial</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="city" class="form-select form-select-lg">
+                                            <option value="">City</option>
+                                            <option>Delhi</option>
+                                            <option>Noida</option>
+                                            <option>Gurgaon</option>
+                                            <option>Bangalore</option>
+                                            <option>Mumbai</option>
+                                            <option>Pune</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select name="budget" class="form-select form-select-lg">
+                                            <option value="">Rent / Month</option>
+                                            <option value="0-10000">Under ₹10,000</option>
+                                            <option value="10000-25000">₹10,000-25,000</option>
+                                            <option value="25000-50000">₹25,000-50,000</option>
+                                            <option value="50000-100000">₹50,000-1 Lac</option>
+                                            <option value="100000-">Above ₹1 Lac</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" class="btn btn-primary-custom btn-lg w-100">
+                                            <i class="fas fa-search me-2"></i>Search
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-building fa-2x text-primary-custom mb-3"></i>
+                        <h3 class="fw-bold">5000+</h3>
+                        <p class="text-muted mb-0">Properties</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-users fa-2x text-primary-custom mb-3"></i>
+                        <h3 class="fw-bold">12000+</h3>
+                        <p class="text-muted mb-0">Happy Customers</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-city fa-2x text-primary-custom mb-3"></i>
+                        <h3 class="fw-bold">50+</h3>
+                        <p class="text-muted mb-0">Cities</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-handshake fa-2x text-primary-custom mb-3"></i>
+                        <h3 class="fw-bold">100%</h3>
+                        <p class="text-muted mb-0">Trusted</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold mb-0">Featured Properties</h2>
+                <div>
+                    <a href="sale.html" class="btn btn-outline-primary me-2">View All Sale</a>
+                    <a href="rent.html" class="btn btn-outline-primary">View All Rent</a>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Property 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="property-img d-flex align-items-center justify-content-center">
+                                <i class="fas fa-building fa-4x text-white opacity-50"></i>
+                            </div>
+                            <span class="badge bg-success type-badge">For Sale</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2">3 BHK Luxury Apartment</h5>
+                            <p class="text-muted small mb-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>Sector 62, Noida
+                            </p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small"><i class="fas fa-bed me-1"></i>3 Beds</span>
+                                <span class="small"><i class="fas fa-bath me-1"></i>2 Baths</span>
+                                <span class="small"><i class="fas fa-ruler-combined me-1"></i>1500 sqft</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag text-primary-custom">₹85 Lac</span>
+                                <a href="property-detail.html?id=1" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="property-img d-flex align-items-center justify-content-center">
+                                <i class="fas fa-home fa-4x text-white opacity-50"></i>
+                            </div>
+                            <span class="badge bg-warning text-dark type-badge">For Rent</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2">2 BHK Flat in Gurgaon</h5>
+                            <p class="text-muted small mb-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>Cyber City, Gurgaon
+                            </p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small"><i class="fas fa-bed me-1"></i>2 Beds</span>
+                                <span class="small"><i class="fas fa-bath me-1"></i>2 Baths</span>
+                                <span class="small"><i class="fas fa-ruler-combined me-1"></i>1200 sqft</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag text-primary-custom">₹25,000/mo</span>
+                                <a href="property-detail.html?id=2" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="property-img d-flex align-items-center justify-content-center">
+                                <i class="fas fa-home fa-4x text-white opacity-50"></i>
+                            </div>
+                            <span class="badge bg-success type-badge">For Sale</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2">4 BHK Premium Villa</h5>
+                            <p class="text-muted small mb-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>Koramangala, Bangalore
+                            </p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small"><i class="fas fa-bed me-1"></i>4 Beds</span>
+                                <span class="small"><i class="fas fa-bath me-1"></i>4 Baths</span>
+                                <span class="small"><i class="fas fa-ruler-combined me-1"></i>3500 sqft</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag text-primary-custom">₹2.5 Cr</span>
+                                <a href="property-detail.html?id=3" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="property-img d-flex align-items-center justify-content-center">
+                                <i class="fas fa-store fa-4x text-white opacity-50"></i>
+                            </div>
+                            <span class="badge bg-success type-badge">For Sale</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2">Commercial Space</h5>
+                            <p class="text-muted small mb-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>Connaught Place, Delhi
+                            </p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small"><i class="fas fa-building me-1"></i>2500 sqft</span>
+                                <span class="small"><i class="fas fa-parking me-1"></i>4 Parkings</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag text-primary-custom">₹2 Cr</span>
+                                <a href="property-detail.html?id=4" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="property-img d-flex align-items-center justify-content-center">
+                                <i class="fas fa-th-large fa-4x text-white opacity-50"></i>
+                            </div>
+                            <span class="badge bg-success type-badge">For Sale</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2">Residential Plot</h5>
+                            <p class="text-muted small mb-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>Sector 70, Chandigarh
+                            </p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small"><i class="fas fa-th-large me-1"></i>5 Marla</span>
+                                <span class="small"><i class="fas fa-border-all me-1"></i>Corner Plot</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag text-primary-custom">₹55 Lac</span>
+                                <a href="property-detail.html?id=5" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="property-img d-flex align-items-center justify-content-center">
+                                <i class="fas fa-building fa-4x text-white opacity-50"></i>
+                            </div>
+                            <span class="badge bg-warning text-dark type-badge">For Rent</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2">1 BHK Studio Apartment</h5>
+                            <p class="text-muted small mb-2">
+                                <i class="fas fa-map-marker-alt me-1"></i>HSR Layout, Pune
+                            </p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small"><i class="fas fa-bed me-1"></i>1 Bed</span>
+                                <span class="small"><i class="fas fa-bath me-1"></i>1 Bath</span>
+                                <span class="small"><i class="fas fa-ruler-combined me-1"></i>600 sqft</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag text-primary-custom">₹18,000/mo</span>
+                                <a href="property-detail.html?id=6" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Types -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Browse by Property Type</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <a href="sale.html?type=apartment" class="text-decoration-none">
+                        <div class="feature-box">
+                            <i class="fas fa-building fa-3x text-primary-custom mb-3"></i>
+                            <h5 class="fw-bold">Apartments</h5>
+                            <p class="text-muted mb-0">500+ listings</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="sale.html?type=house" class="text-decoration-none">
+                        <div class="feature-box">
+                            <i class="fas fa-home fa-3x text-primary-custom mb-3"></i>
+                            <h5 class="fw-bold">Houses/Villas</h5>
+                            <p class="text-muted mb-0">300+ listings</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="sale.html?type=plot" class="text-decoration-none">
+                        <div class="feature-box">
+                            <i class="fas fa-th-large fa-3x text-primary-custom mb-3"></i>
+                            <h5 class="fw-bold">Plots/Land</h5>
+                            <p class="text-muted mb-0">200+ listings</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="sale.html?type=commercial" class="text-decoration-none">
+                        <div class="feature-box">
+                            <i class="fas fa-store fa-3x text-primary-custom mb-3"></i>
+                            <h5 class="fw-bold">Commercial</h5>
+                            <p class="text-muted mb-0">150+ listings</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold mb-2">Want to Sell Your Property?</h3>
+                    <p class="mb-0 opacity-75">Post your property for free and reach thousands of genuine buyers.</p>
+                </div>
+                <div class="col-lg-4 text-end mt-3 mt-lg-0">
+                    <a href="contact.html?type=post" class="btn btn-light text-primary-custom btn-lg">
+                        <i class="fas fa-plus me-2"></i>Post Property Free
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Why Choose Brothers Property Solution</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <i class="fas fa-shield-alt fa-3x text-primary-custom mb-3"></i>
+                        <h4 class="fw-bold">Verified Properties</h4>
+                        <p class="text-muted">Every property is verified by our team before listing</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <i class="fas fa-hand-holding-usd fa-3x text-primary-custom mb-3"></i>
+                        <h4 class="fw-bold">Best Prices</h4>
+                        <p class="text-muted">We help you get the best market deal</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <i class="fas fa-headset fa-3x text-primary-custom mb-3"></i>
+                        <h4 class="fw-bold">24/7 Support</h4>
+                        <p class="text-muted">Our team is always here to help you</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="fw-bold mb-3"><i class="fas fa-building me-2"></i>Brothers Property Solution</h4>
+                    <p class="text-muted">India's trusted platform for buying and selling properties. We help you find your dream home.</p>
+                    <div>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Home</a></li>
+                        <li><a href="sale.html" class="text-muted">For Sale</a></li>
+                        <li><a href="rent.html" class="text-muted">For Rent</a></li>
+                        <li><a href="contact.html" class="text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Property</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="sale.html?type=apartment" class="text-muted">Apartment</a></li>
+                        <li><a href="sale.html?type=house" class="text-muted">House</a></li>
+                        <li><a href="sale.html?type=plot" class="text-muted">Plot</a></li>
+                        <li><a href="sale.html?type=commercial" class="text-muted">Commercial</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Contact Us</h6>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>123 Business Hub, Delhi</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+91 9999999999</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>info@brothersproperty.com</li>
+                        <li><i class="fas fa-clock me-2"></i>Mon - Sat: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2024 Brothers Property Solution. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
